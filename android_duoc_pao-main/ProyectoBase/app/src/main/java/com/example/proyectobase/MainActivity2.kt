@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.proyectobase.funciones.MainActivity7
 import com.example.proyectobase.funciones.ValidarConexionWAN
 
 
@@ -51,7 +52,8 @@ class MainActivity2 : AppCompatActivity() {
             , "LEER API"
             , "GUARDAR API"
             , "GUARDAR SQL LITE"
-            , "LEER SQL LITE")
+            , "LEER SQL LITE"
+            , "GUARDAR ALUMNO")
 
         val adaptador2 = ArrayAdapter(this
             , android.R.layout.simple_list_item_1
@@ -79,6 +81,10 @@ class MainActivity2 : AppCompatActivity() {
             else if (lsMenuOpcionSeleccionada.equals("LEER API")) {
                 val leerapi = Intent(this, LeerWebService::class.java)
                 startActivity(leerapi)
+            }
+            else if (lsMenuOpcionSeleccionada.equals("GUARDAR ALUMNO")) {
+                val guardarAlumno = Intent(this, MainActivity7::class.java)
+                startActivity(guardarAlumno)
             }else{
                 Toast.makeText(this, "NINGUNA OPCION SELECCIONADA", Toast.LENGTH_SHORT).show()
             }
