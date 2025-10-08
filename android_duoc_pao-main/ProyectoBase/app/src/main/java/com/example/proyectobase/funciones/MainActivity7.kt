@@ -48,11 +48,23 @@ class MainActivity7 : AppCompatActivity() {
 
 
         btnGuardar.setOnClickListener {
+
             InsertarAlumnosAPI.insertarAlumno(
                 owner = this,
                 context = this,
-                nombre = edTextNombre.text.toString(),
-                apellido = edTextApellido.text.toString(),
+                nombre = if (edTextNombre.text.toString().isEmpty()) {
+                    Toast.makeText(this, "El campo está vacío", Toast.LENGTH_SHORT).show()
+                    ""
+                } else {
+                    edTextNombre.text.toString()
+                }
+                ,
+                apellido = if (edTextApellido.text.toString().isEmpty()) {
+                    Toast.makeText(this, "El campo está vacío", Toast.LENGTH_SHORT).show()
+                    ""
+                } else {
+                    edTextApellido.text.toString()
+                },
                 grupo = spGrupo.selectedItem.toString(),
                 seccion = spSeccion.selectedItem.toString(),
                 archivoBytes = null,
@@ -62,9 +74,12 @@ class MainActivity7 : AppCompatActivity() {
 
                 },
                 onError = {
-                    ""
+                    println("Error")
                 }
             )
+
+
+
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
